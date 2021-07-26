@@ -1,4 +1,4 @@
-OBJS=test_pattern.o
+OBJS=test_pattern.o max_elements_test.o
 BIN=test_pattern
 
 CFLAGS+=-Wall -g -O3 -I../common

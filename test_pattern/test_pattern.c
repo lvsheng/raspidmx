@@ -43,6 +43,8 @@
 
 //-------------------------------------------------------------------------
 
+int test();
+
 int main(int argc, char *argv[])
 {
     uint32_t displayNumber = 0;
@@ -50,6 +52,8 @@ int main(int argc, char *argv[])
     //-------------------------------------------------------------------
 
     int opt;
+
+test();
 
     while ((opt = getopt(argc, argv, "d:")) != -1)
     {
