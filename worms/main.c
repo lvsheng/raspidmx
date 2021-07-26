@@ -132,6 +132,8 @@ int main(int argc, char *argv[])
 
     DISPMANX_DISPLAY_HANDLE_T display
         = vc_dispmanx_display_open(displayNumber);
+    printf("after vc_dispmanx_display_open(%d) display:%d\n", displayNumber, display);
+    if (display == 0) perror("[error] vc_dispmanx_display_open");
     assert(display != 0);
 
     //---------------------------------------------------------------------

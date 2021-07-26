@@ -363,7 +363,7 @@ int main(int argc, char *argv[])
 
                 break;
 
-            case '+':
+            case '1':
 
                 if ((width < modeInfo.width) && (height < modeInfo.height))
                 {
@@ -375,7 +375,7 @@ int main(int argc, char *argv[])
 
                 break;
 
-            case '-':
+            case '2':
 
                 if ((width > 1) && (height > 1))
                 {

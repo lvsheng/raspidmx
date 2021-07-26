@@ -258,8 +258,45 @@ int main(int argc, char *argv[])
                                display,
                                update);
 
-    result = vc_dispmanx_update_submit_sync(update);
-    assert(result == 0);
+//  int count = 0;
+//  int stepY = 250;
+//  int stepX = 350;
+////  int stepY = 100;
+////  int stepX = 300;
+////  int stepX = 350;
+////  int maxY = 600;
+//  int maxY = 300;
+//  int maxX = 1200;
+//  for (int i = 0; i < 3; ++i) {
+//    for (int y = 0; y < maxY; y += stepY) {
+//      for (int x = 0; x < maxX; x += stepX) {
+//        addElementImageLayerOffset(&imageLayer,
+//                                   x + i * 100,
+//                                   y + i * 100,
+//                                   display,
+//                                   update);
+//        printf("after addElementImageLayerOffset %d %d. c:%d\n", x, y, ++count);
+//      }
+//    }
+//  }
+
+//  int maxI = 24; // 正常
+//  int maxI = 25; // 就开始黑了，会有一个正常(但哪个正常又与layer层级有关)
+  int maxI = 24;
+  int cH = 4;
+  for (int i = 0; i < maxI; ++i) {
+    int x = (i % cH) * 350;
+    int y = i / cH * (700 / (maxI / cH));
+
+    IMAGE_LAYER_T imageLayer;
+    loadPng(&(imageLayer.image), imagePath);
+    createResourceImageLayer(&imageLayer, i + 1);
+    addElementImageLayerOffset(&imageLayer, x, y, display, update);
+    printf("after addElementImageLayerOffset %d %d. i:%d\n", x, y, i);
+  }
+
+  result = vc_dispmanx_update_submit_sync(update);
+  assert(result == 0);
 
     //---------------------------------------------------------------------
 

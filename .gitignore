@@ -23,3 +23,5 @@ worms/worms
 # other directories
 
 *_/
+
+.idea

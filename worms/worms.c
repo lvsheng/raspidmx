@@ -276,6 +276,8 @@ addElementWorms(
     worms->element =
         vc_dispmanx_element_add(update,
                                 display,
+//                                -128,
+//                                0,
                                 2000,
                                 &dst_rect,
                                 worms->frontResource,

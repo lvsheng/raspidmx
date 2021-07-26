@@ -193,9 +193,30 @@ int main(int argc, char *argv[])
                                 DISPMANX_NO_ROTATE);
     assert(element != 0);
 
-    //---------------------------------------------------------------------
+    // 30没问题，100会导致显示器异常
+  for (int i = 0; i < 30; ++i) {
+    printf("before vc_dispmanx_element_add i:%d\n", i);
+    DISPMANX_ELEMENT_HANDLE_T element = vc_dispmanx_element_add(update,
+                            display,
+//                            i + 3, // layer
+                            1, // layer
+                            &dst_rect,
+                            bgResource,
+                            &src_rect,
+                            DISPMANX_PROTECTION_NONE,
+                            &alpha,
+                            NULL, // clamp
+                            DISPMANX_NO_ROTATE);
+    printf("after vc_dispmanx_element_add element:%d\n", element);
+  }
+
+  //---------------------------------------------------------------------
 
     result = vc_dispmanx_update_submit_sync(update);
+    printf("after vc_dispmanx_update_submit_sync result:%d\n", result);
+    if (result != 0) {
+      perror("[error] vc_dispmanx_update_submit_sync");
+    }
     assert(result == 0);
 
     //---------------------------------------------------------------------
